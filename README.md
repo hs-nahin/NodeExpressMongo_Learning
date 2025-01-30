@@ -102,10 +102,11 @@ Learn the core concepts of Node.js, Express.js, and MongoDB with hands-on exampl
 
 #### [Node](./Basics/Node/)
 
-- **[HelloWorld.js](./Basics/Node/HelloWorld.js)**: Write your first Node.js program.
-- **[Modules.js](./Basics/Node/Modules.js)**: Learn about Node.js modules and how to use them.
-- **[FSModule.js](./Basics/Node/FSModule.js)**: Explore the File System module for reading and writing files.
-- **[Events.js](./Basics/Node/Events.js)**: Understand event-driven programming in Node.js.
+- **[index.js](./Basics/Node/00_GettingStarted/index.js)**: Write your first Node.js program.
+- **[Modules.js](./Basics/Node/00_GettingStarted/Modules.js)**: Learn about Node.js modules and how to use them.
+- **[FSModule.js](./Basics/Node/00_GettingStarted/FSModule.js)**: Explore the File System module for reading and writing files.
+- **[Events.js](./Basics/Node/00_GettingStarted/Events.js)**: Understand event-driven programming in Node.js.
+- **[http.js](./Basics/Node/00_GettingStarted/http.js)**: Learn how to create an HTTP server using the `http` module.
 
 #### [Express](./Basics/Express/)
 
