@@ -1,54 +1,36 @@
-/* 
-* Title: Uptime Monitoring Application
-* Description: A RESTful API to monitor up or down time of user defined links
-*/
+/*
+ * Title: Uptime Monitoring Application
+ * Description: A simple RESTful API to monitor the uptime or downtime of user-defined links.
+ * Author: Hasnat Shahriyar Nahin
+ */
 
 // Dependencies
-const http = require('http');
-const url = require('url');
-const {StringDecoder} = require('string_decoder');
-const { buffer } = require('stream/consumers');
+const http = require("http"); // Import HTTP module to create a server
+
+const {handleReqRes} = require('./helpers/handleReqRes');
 
 
-// app object - module scaffolding
+// App object - module scaffolding
 const app = {};
 
-// Configuration
+// Configuration settings
 app.config = {
-    port: 3000,
+  port: 3000, // Define the port where the server will listen
 };
 
-// Create a server
+// Function to create and start the server
 app.createServer = () => {
-    const server = http.createServer(app.handleRequestRes);
-    server.listen(app.config.port, () => {
-        console.log(`Server is running on port ${app.config.port}`);
-    })
-}
+  // Create an HTTP server and attach the request handler function
+  const server = http.createServer(app.handleRequestRes);
 
-// Handle requests and send response
-app.handleRequestRes = (req, res) => {
-    // Request Handling
-    // Get the url and parse it
-    const parsedUrl = url.parse(req.url, true);
-    const path = parsedUrl.pathname;
-    const trimmedPath = path.replace(/^\/+|\/+$/g, '');
-    const method = req.method.toLowerCase();
-    const queryStringObject = parsedUrl.query;
-    const headersObject = req.headers;
-    const decoder = new StringDecoder('utf-8');
-    let realData = '';
+  // Start the server and listen on the defined port
+  server.listen(app.config.port, () => {
+    console.log(`Server is running on port ${app.config.port}`);
+  });
+};
 
-    req.on('data', (buffer) => {
-        realData += decoder.write(buffer);
-    })
-    req.on('end', () => {
-        realData += decoder.end();
-        console.log(realData); 
-        // Send response
-        res.end('Hello Nahin');
-    })
-}
+// Handle incoming requests and send responses
+app.handleRequestRes = handleReqRes;
 
 // Start the server
 app.createServer();
